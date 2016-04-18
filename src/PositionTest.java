@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 /**
- * Created by dv15man on 2016-04-18.
+ * Created by dv15man
  */
 public class PositionTest {
 

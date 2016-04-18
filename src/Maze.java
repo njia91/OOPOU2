@@ -11,7 +11,7 @@ import java.util.Queue;
 public class Maze {
 
     private char[][] maze;
-    //private position start;
+    private Position start;
 
 
     /**
@@ -28,8 +28,8 @@ public class Maze {
         int lineSize = 0;
         int i;
         int lineIndex = 0;
-
-
+        boolean startExist = false;
+        boolean goalExist = false;
 
         // Read the file and stores each line in an queue.
         while((line = buffer.readLine()) != null){
@@ -56,19 +56,22 @@ public class Maze {
             lineIndex++;
         }
 
-        for (char[] row: maze){
-            for (char column: row){
-                System.out.print(column);
-               // start = new Position(row,column);
+        for (int row = 0; row <lineNr; row++){
+            for (int column = 0; column < lineSize; column++){
+                System.out.print(maze[row][column]);
+                start = new Position(row,column);
+                if (maze[row][column] == 'G'){
+                    goalExist = true;
+                }
+                if (maze[row][column] == 'S'){
+                    startExist = true;
+                }
             }
-
         }
 
-
-
-
-
-
+        if(!goalExist ||  !startExist){
+            throw new IOException("Invalid Maze on file")
+        }
 
     }
 
