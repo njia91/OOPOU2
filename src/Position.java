@@ -33,27 +33,42 @@ public class Position {
         return this.y;
     }
 
+    /**
+     * Method that returns the position to the south of current position.
+     * @return Position
+     */
     public Position getPosToSouth(){
         return new Position(this.y-1, this.x);
     }
 
+    /**
+     * Method that returns the position to the north of current position.
+     * @return Position
+     */
     public Position getPosToNorth(){
         return new Position(this.y+1, this.x);
     }
 
+    /**
+     * Method that returns the position to the west of current position.
+     * @return Position
+     */
     public Position getPosToWest(){
         return new Position(this.y, this.x-1);
     }
-
+    /**
+     * Method that returns the position to the east of current position.
+     * @return Position
+     */
     public Position getPosToEast(){
         return new Position(this.y, this.x+1);
     }
 
 
     /**
-     *
-     * @param o
-     * @return
+     *Method that can be used to compare two objects
+     * @param o Object that will be compared with.
+     * @return True if they have same values.
      */
     @Override
     public boolean equals(Object o) {
@@ -69,7 +84,7 @@ public class Position {
 
     /**
      * Creates a hashcode for the object
-     * @return
+     * @return the hashcode.
      */
     @Override
     public int hashCode() {
