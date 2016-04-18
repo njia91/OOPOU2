@@ -24,7 +24,7 @@ public class PositionTest {
     @Test
     public void shouldGetCorrectX() throws Exception{
         Position p = new Position(5,6);
-        assertEquals(5, p.getX());
+        assertEquals(6, p.getX());
     }
 
     /**
@@ -34,7 +34,7 @@ public class PositionTest {
     @Test
     public void shouldNotGetCorrectX() throws Exception{
         Position p = new Position(5,6);
-        assertNotEquals(6, p.getX());
+        assertNotEquals(5, p.getX());
     }
 
     /**
@@ -43,7 +43,7 @@ public class PositionTest {
      */
     @Test
     public void shouldGetCorrectY() throws Exception{
-        Position p = new Position(5,6);
+        Position p = new Position(6,5);
         assertEquals(6, p.getY());
     }
 
@@ -54,10 +54,13 @@ public class PositionTest {
     @Test
     public void shouldNotGetCorrectY() throws Exception{
         Position p = new Position(5,6);
-        assertNotEquals(5, p.getY());
+        assertNotEquals(6, p.getY());
     }
 
-
+    /**
+     * Tests if two position are equal.
+     * @throws Exception
+     */
     @Test
     public void twoPositionsEqual() throws Exception {
         Position p1 = new Position(10,10);
@@ -65,6 +68,10 @@ public class PositionTest {
         assertEquals(true, p1.equals(p2));
     }
 
+    /**
+     * Test that equal function does not return true when it should not.
+     * @throws Exception
+     */
     @Test
     public void  twoPositionsNotEqual() throws Exception {
         Position p1 = new Position(10,10);
@@ -72,6 +79,10 @@ public class PositionTest {
         assertNotEquals(true, p1.equals(p2));
     }
 
+    /**
+     * Test if Position moves one step to east
+     * @throws Exception
+     */
     @Test
     public void  shouldIncrementXValue() throws Exception {
         Position p1 = new Position(10,10);
@@ -81,6 +92,10 @@ public class PositionTest {
         assertEquals(11,p2.getX());
     }
 
+    /**
+     * Test if Position moves one step to Nort
+     * @throws Exception
+     */
     @Test
     public void  shouldIncrementYValue() throws Exception {
         Position p1 = new Position(10,10);
@@ -90,18 +105,38 @@ public class PositionTest {
         assertEquals(11,p2.getY());
     }
 
+    /**
+     * Test if Position moves one step to South
+     * @throws Exception
+     */
     @Test
-    public void  shouldIncrementYValue() throws Exception {
+    public void  shouldDecrementYValue() throws Exception {
         Position p1 = new Position(10,10);
         Position p2;
-        p2 = p1.getPosToNorth();
+        p2 = p1.getPosToSouth();
 
-        assertEquals(11,p2.getY());
+        assertEquals(9,p2.getY());
     }
 
 
+    /**
+     * Test if Position moves one step to West
+     * @throws Exception
+     */
+    @Test
+    public void  shouldDecrementXValue() throws Exception {
+        Position p1 = new Position(10,10);
+        Position p2;
+        p2 = p1.getPosToWest();
+
+        assertEquals(9,p2.getX());
+    }
 
 
+    /**
+     * Test that  getposToEast and Equals work. And don't return invalid.
+     * @throws Exception
+     */
     @Test
     public void  shouldNotBeSamePosition() throws Exception {
         Position p1 = new Position(10,10);
@@ -112,16 +147,56 @@ public class PositionTest {
     }
 
 
-
-
+    /**
+     * Test that getposToEast function returns correct Position
+     * @throws Exception
+     */
     @Test
-    public void  should() throws Exception {
+    public void  shouldBeSamePositionEast() throws Exception {
         Position p1 = new Position(10,10);
         Position p2;
         Position p3 = new Position(10,11);
         p2 = p1.getPosToEast();
+        assertEquals(true, p2.equals(p3));
+    }
 
-        assertNotEquals(false, p2.equals(p2));
+    /**
+     * Test that getposToWest function returns correct Position
+     * @throws Exception
+     */
+    @Test
+    public void  shouldBeSamePositionWest() throws Exception {
+        Position p1 = new Position(10,10);
+        Position p2;
+        Position p3 = new Position(10,9);
+        p2 = p1.getPosToWest();
+        assertEquals(true, p2.equals(p3));
+    }
+
+    /**
+     * Test that getposToSouth function returns correct Position
+     * @throws Exception
+     */
+    @Test
+    public void  shouldBeSamePositionSouth() throws Exception {
+        Position p1 = new Position(10,10);
+        Position p2;
+        Position p3 = new Position(9,10);
+        p2 = p1.getPosToSouth();
+        assertEquals(true, p2.equals(p3));
+    }
+
+    /**
+     * Test that getposToNorth function returns correct Position
+     * @throws Exception
+     */
+    @Test
+    public void  shouldBeSamePositionNorth() throws Exception {
+        Position p1 = new Position(10,10);
+        Position p2;
+        Position p3 = new Position(11,10);
+        p2 = p1.getPosToNorth();
+        assertEquals(true, p2.equals(p3));
     }
 
 
