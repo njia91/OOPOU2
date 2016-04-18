@@ -11,7 +11,7 @@ import java.util.Queue;
 public class Maze {
 
     private char[][] maze;
-    private position start;
+    //private position start;
 
 
     /**
@@ -59,7 +59,7 @@ public class Maze {
         for (char[] row: maze){
             for (char column: row){
                 System.out.print(column);
-                start = new Position(row,column);
+               // start = new Position(row,column);
             }
 
         }
