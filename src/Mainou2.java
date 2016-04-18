@@ -10,17 +10,17 @@ public class Mainou2 {
 
     public static void main(String[] args) {
         try {
-            File file = new File(args[0])
-            FileReader fileReader = new FileReader(file);
+            File file = new File(args[0]);
+            FileReader stream = new FileReader(file);
+            Maze maze = new Maze(stream);
         }
-        catch(NullPointerException e){
-            if(!file.exists()){
-                System.out.println(args[0] + "does not exist!");
-            }
+        catch(Exception e){
+            System.out.println("Something wrong with input file!");
+
             System.exit(0);
         }
 
-        Maze maze = new Maze(file);
+
 
 
 

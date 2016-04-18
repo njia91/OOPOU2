@@ -11,6 +11,7 @@ import java.util.Queue;
 public class Maze {
 
     private char[][] maze;
+    private position start;
 
 
     /**
@@ -19,11 +20,16 @@ public class Maze {
      * @throws IOException if somethings wrong with file.
      */
     public Maze(java.io.Reader file) throws IOException{
+
         BufferedReader buffer = new BufferedReader(file);
-        Queue<String> queue = new LinkedList<Sting>();
+        Queue<String> queue = new LinkedList<String>();
         String line;
         int lineNr = 0;
         int lineSize = 0;
+        int i;
+        int lineIndex = 0;
+
+
 
         // Read the file and stores each line in an queue.
         while((line = buffer.readLine()) != null){
@@ -35,7 +41,28 @@ public class Maze {
         }
 
 
+
         maze = new char[lineNr][lineSize];
+
+        // Merging the lines from the file to the maze array.
+        while ((line = queue.poll()) != null){
+            i = 0;
+
+            while (i < line.length()){
+                maze[lineIndex][i] = line.charAt(i);
+                i++;
+            }
+            i = 0 ;
+            lineIndex++;
+        }
+
+        for (char[] row: maze){
+            for (char column: row){
+                System.out.print(column);
+                start = new Position(row,column);
+            }
+
+        }
 
 
 

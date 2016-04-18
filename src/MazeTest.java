@@ -5,6 +5,6 @@ import org.junit.Test;
  */
 public class MazeTest {
 
-    @Test
+   // @Test
 
 }
