@@ -42,7 +42,7 @@ public class Maze {
 
 
         maze = new char[lineNr][lineSize];
-        listOfGoals = new LinkedList<Position>();
+
 
         // Merging the lines from the file to the maze array.
         while ((line = queue.poll()) != null){
@@ -68,6 +68,7 @@ public class Maze {
                 }
             }
         }
+
         if(!startExist ||  !goalExist){
             throw new IOException("Invalid Maze on file");
         }
