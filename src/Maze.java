@@ -1,7 +1,6 @@
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.Queue;
 
 
@@ -43,6 +42,7 @@ public class Maze {
 
 
         maze = new char[lineNr][lineSize];
+        listOfGoals = new LinkedList<Position>();
 
         // Merging the lines from the file to the maze array.
         while ((line = queue.poll()) != null){
@@ -58,32 +58,39 @@ public class Maze {
 
         for (int row = 0; row <lineNr; row++){
             for (int column = 0; column < lineSize; column++){
-                System.out.print(maze[row][column]);
                 start = new Position(row,column);
                 if (maze[row][column] == 'G'){
                     goalExist = true;
                 }
                 if (maze[row][column] == 'S'){
+                    this.start = new Position(row,column);
                     startExist = true;
                 }
             }
         }
-
-        if(!goalExist ||  !startExist){
-            throw new IOException("Invalid Maze on file")
+        if(!startExist ||  !goalExist){
+            throw new IOException("Invalid Maze on file");
         }
+    }
+
+    public boolean  IsMovable(Position p){
+        if (maze[p.getX()][p.getY()] == ' ' &&
+                maze[p.getX()][p.getY()] == 'G'){
+            return true;
+        }
+        return false;
 
     }
 
-  //  public boolean  IsMovable(Position p){
+   public boolean isGoal(Position p) throws IndexOutOfBoundsException{
+        if (maze[p.getX()][p.getY()] == 'G'){
+            return true;
+        }
+        return false;
 
-  //  }
+   }
 
-  //  public boolean isGoal(Position p){
-
-  //  }
-
-  //  public Position getStartPosition(){
-
-   // }
+    public Position getStartPosition(){
+        return start;
+    }
 }
