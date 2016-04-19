@@ -63,6 +63,7 @@ public class Maze {
             lineIndex++;
         }
 
+        // Controls and checks  the start and goal position.
         for (int row = 0; row <lineNr; row++){
             for (int column = 0; column < lineSize; column++){
                 start = new Position(row,column);
@@ -76,6 +77,7 @@ public class Maze {
             }
         }
 
+        //Controlls that  maze only contained one start and at least one goal.
         if( startExist == 0 || startExist > 1 ||  !goalExist){
             throw new IOException("Invalid Maze on file");
         }
