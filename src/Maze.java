@@ -1,6 +1,7 @@
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Queue;
 
 
@@ -27,7 +28,7 @@ public class Maze {
         int lineSize = 0;
         int i;
         int lineIndex = 0;
-        boolean startExist = false;
+        int startExist = 0;
         boolean goalExist = false;
 
         // Read the file and stores each line in an queue.
@@ -48,9 +49,15 @@ public class Maze {
         while ((line = queue.poll()) != null){
             i = 0;
 
-            while (i < line.length()){
-                maze[lineIndex][i] = line.charAt(i);
+            while (i < lineSize){
+                if (i < line.length()) {
+                    maze[lineIndex][i] = line.charAt(i);
+                }
+                else{
+                    maze[lineIndex][i] = '*';
+                }
                 i++;
+                System.out.println(i);
             }
             i = 0 ;
             lineIndex++;
@@ -64,18 +71,25 @@ public class Maze {
                 }
                 if (maze[row][column] == 'S'){
                     this.start = new Position(row,column);
-                    startExist = true;
+                    startExist++;
                 }
             }
         }
 
-        if(!startExist ||  !goalExist){
+        if( startExist == 0 || startExist > 1 ||  !goalExist){
             throw new IOException("Invalid Maze on file");
+        }
+
+        for(char[] c: maze){
+            for(char k: c){
+                System.out.print(k);
+            }
+            System.out.println("");
         }
     }
 
     public boolean  IsMovable(Position p){
-        if (maze[p.getX()][p.getY()] == ' ' &&
+        if (maze[p.getX()][p.getY()] == ' ' ||
                 maze[p.getX()][p.getY()] == 'G'){
             return true;
         }
