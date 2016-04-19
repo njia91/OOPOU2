@@ -57,7 +57,7 @@ public class Maze {
                     maze[lineIndex][i] = '*';
                 }
                 i++;
-                System.out.println(i);
+
             }
             i = 0 ;
             lineIndex++;
@@ -80,12 +80,13 @@ public class Maze {
             throw new IOException("Invalid Maze on file");
         }
 
-        for(char[] c: maze){
+/*        for(char[] c: maze){
             for(char k: c){
                 System.out.print(k);
             }
             System.out.println("");
         }
+      */
     }
 
     public boolean  IsMovable(Position p){
