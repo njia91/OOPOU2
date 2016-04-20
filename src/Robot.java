@@ -14,7 +14,7 @@ public abstract class Robot {
     /**
      * Abstract class for moving the robot.
      */
-    public abstract void move();
+    public abstract void move() throws Exception;
 
     /**
      * Returns the current position of the robot.
@@ -39,5 +39,18 @@ public abstract class Robot {
      */
     public boolean hasReachedGoal(){
         return maze.isGoal(currentP);
+    }
+
+    /**
+     * Function is used to check if Robot is trapped/boxed in.
+     * @throws IllegalStateException
+     */
+    protected  void checkIfTraped() throws IllegalStateException{
+        if( !maze.isMovable().(currentP.getPosToSouth()) &&
+                maze.isMovable().(currentP.getPosToNorth()) &&
+                maze.isMovable().(currentP.getPosToWest()) &&
+                maze.isMovable().(currentP.getPosToEast())){
+            throw new IllegalStateException("Robot is boxed in!")
+        }
     }
 }
