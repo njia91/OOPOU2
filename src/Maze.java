@@ -27,6 +27,7 @@ public class Maze {
         int lineNr = 0;
         int lineSize = 0;
         int i;
+
         int lineIndex = 0;
         int startExist = 0;
         boolean goalExist = false;
@@ -63,52 +64,57 @@ public class Maze {
             lineIndex++;
         }
 
-        // Controls and checks  the start and goal position.
+        // Controls and checks  that start and goal position exist in the maze.
         for (int row = 0; row <lineNr; row++){
             for (int column = 0; column < lineSize; column++){
-                start = new Position(row,column);
                 if (maze[row][column] == 'G'){
                     goalExist = true;
                 }
                 if (maze[row][column] == 'S'){
+
                     this.start = new Position(row,column);
                     startExist++;
                 }
             }
         }
 
-        //Controlls that  maze only contained one start and at least one goal.
+
+        //Control that  maze only contained one start and at least one goal.
         if( startExist == 0 || startExist > 1 ||  !goalExist){
             throw new IOException("Invalid Maze on file");
         }
-
-/*        for(char[] c: maze){
-            for(char k: c){
-                System.out.print(k);
-            }
-            System.out.println("");
-        }
-      */
     }
 
-    public boolean  IsMovable(Position p){
-        if (maze[p.getX()][p.getY()] == ' ' ||
-                maze[p.getX()][p.getY()] == 'G'){
-            return true;
+    public boolean  IsMovable(Position p) throws IndexOutOfBoundsException{
+
+        try {
+            if (maze[p.getY()][p.getX()] == ' ' ||
+                    maze[p.getY()][p.getX()] == 'G'
+                    || maze[p.getY()][p.getX()] == 'S') {
+                return true;
+            }
+
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Array index out of bounds!");
         }
         return false;
 
     }
 
    public boolean isGoal(Position p) throws IndexOutOfBoundsException{
-        if (maze[p.getX()][p.getY()] == 'G'){
-            return true;
-        }
+       try {
+           if (maze[p.getY()][p.getX()] == 'G') {
+               return true;
+           }
+       } catch(ArrayIndexOutOfBoundsException e){
+           System.out.println("Array index out of bounds!");
+       }
         return false;
 
    }
 
     public Position getStartPosition(){
-        return start;
+
+        return this.start;
     }
 }
