@@ -95,7 +95,7 @@ public class Maze {
             }
 
         } catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Array index out of bounds!");
+            System.out.println();
         }
         return false;
 

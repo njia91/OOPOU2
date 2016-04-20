@@ -46,11 +46,11 @@ public abstract class Robot {
      * @throws IllegalStateException
      */
     protected  void checkIfTraped() throws IllegalStateException{
-        if( !maze.isMovable().(currentP.getPosToSouth()) &&
-                maze.isMovable().(currentP.getPosToNorth()) &&
-                maze.isMovable().(currentP.getPosToWest()) &&
-                maze.isMovable().(currentP.getPosToEast())){
-            throw new IllegalStateException("Robot is boxed in!")
+        if( !maze.isMovable(currentP.getPosToSouth()) &&
+                !maze.isMovable(currentP.getPosToNorth()) &&
+                !maze.isMovable(currentP.getPosToWest()) &&
+                !maze.isMovable(currentP.getPosToEast())){
+            throw new IllegalStateException("Robot is boxed in!");
         }
     }
 }

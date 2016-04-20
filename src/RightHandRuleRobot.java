@@ -1,13 +1,15 @@
 /**
- * Created by dv15man on 2016-04-20.
+ * Created by dv15man.
  */
 public class RightHandRuleRobot extends Robot {
 
 
 
-    public Robot(Maze maze){
+    public RightHandRuleRobot(Maze maze){
         super(maze);
         super.setCurrentPosition(maze.getStartPosition());
+
+
     }
 
     public void move() throws Exception{
@@ -28,7 +30,7 @@ public class RightHandRuleRobot extends Robot {
             else if (faceingP.equals(getCurrentPosition().getPosToNorth())){
                 facingNorth();
              }
-            else (faceingP.equals(getCurrentPosition().getPosToEast())){
+            else if(faceingP.equals(getCurrentPosition().getPosToEast())){
                 facingEast();
             }
 
