@@ -20,7 +20,7 @@ public class RightHandRuleRobot extends Robot {
         catch (Exception e) {
             throw new IllegalStateException();
         }
-
+        System.out.println(getCurrentPosition().getY() + " " + getCurrentPosition().getX());
             if (faceingP.equals(getCurrentPosition().getPosToSouth())) {
                 facingSouth();
             }
