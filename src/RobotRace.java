@@ -16,11 +16,11 @@ public class RobotRace {
 
                 RightHandRuleRobot robbie = new RightHandRuleRobot(maze);
                 int i = 0;
-                while ( i <10) {
+                while ( i <5) {
                     robbie.move();
                     stepCounterRightHandRobot++;
-                    System.out.println("Steps for right handed robot: " +
-                            stepCounterRightHandRobot);
+                    //System.out.println("Steps for right handed robot: " +
+                            //stepCounterRightHandRobot);
                     i++;
                 }
 

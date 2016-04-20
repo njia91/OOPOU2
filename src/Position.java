@@ -39,7 +39,7 @@ public class Position {
      * @return Position
      */
     public Position getPosToSouth(){
-        return new Position(this.y-1, this.x);
+        return new Position(this.y+1, this.x);
     }
 
     /**
@@ -47,7 +47,7 @@ public class Position {
      * @return Position
      */
     public Position getPosToNorth(){
-        return new Position(this.y+1, this.x);
+        return new Position(this.y-1, this.x);
     }
 
     /**

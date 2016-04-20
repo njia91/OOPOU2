@@ -93,7 +93,7 @@ public class PositionTest {
     }
 
     /**
-     * Test if Position moves one step to Nort
+     * Test if Position moves one step to North
      * @throws Exception
      */
     @Test
@@ -102,7 +102,7 @@ public class PositionTest {
         Position p2;
         p2 = p1.getPosToNorth();
 
-        assertEquals(11,p2.getY());
+        assertEquals(9,p2.getY());
     }
 
     /**
@@ -115,7 +115,7 @@ public class PositionTest {
         Position p2;
         p2 = p1.getPosToSouth();
 
-        assertEquals(9,p2.getY());
+        assertEquals(11,p2.getY());
     }
 
 
@@ -181,7 +181,7 @@ public class PositionTest {
     public void  shouldBeSamePositionSouth() throws Exception {
         Position p1 = new Position(10,10);
         Position p2;
-        Position p3 = new Position(9,10);
+        Position p3 = new Position(11,10);
         p2 = p1.getPosToSouth();
         assertEquals(true, p2.equals(p3));
     }
@@ -194,7 +194,7 @@ public class PositionTest {
     public void  shouldBeSamePositionNorth() throws Exception {
         Position p1 = new Position(10,10);
         Position p2;
-        Position p3 = new Position(11,10);
+        Position p3 = new Position(9,10);
         p2 = p1.getPosToNorth();
         assertEquals(true, p2.equals(p3));
     }

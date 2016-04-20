@@ -41,10 +41,7 @@ public class Maze {
             lineNr++;
         }
 
-
-
         maze = new char[lineNr][lineSize];
-
 
         // Merging the lines from the file to the maze array.
         while ((line = queue.poll()) != null){
