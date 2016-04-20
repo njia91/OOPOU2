@@ -82,7 +82,7 @@ public class MazeTest {
         Maze maze = new Maze(stream);
         Position p = new Position(0,0);
 
-        assertEquals(true, maze.IsMovable(p));
+        assertEquals(true, maze.isMovable(p));
     }
 
     /**
@@ -96,7 +96,7 @@ public class MazeTest {
         Maze maze = new Maze(stream);
         Position p = new Position(1,0);
 
-        assertEquals(false, maze.IsMovable(p));
+        assertEquals(false, maze.isMovable(p));
     }
 
     /**
@@ -110,7 +110,7 @@ public class MazeTest {
         Maze maze = new Maze(stream);
         Position p = new Position(0,1);
 
-        assertEquals(false, maze.IsMovable(p));
+        assertEquals(false, maze.isMovable(p));
     }
 
     /**
@@ -124,7 +124,7 @@ public class MazeTest {
         Maze maze = new Maze(stream);
         Position p = new Position(2,0);
 
-        assertEquals(true, maze.IsMovable(p));
+        assertEquals(true, maze.isMovable(p));
     }
 
     /**
@@ -138,7 +138,7 @@ public class MazeTest {
         Maze maze = new Maze(stream);
         Position p = new Position(3,0);
 
-        assertEquals(true, maze.IsMovable(p));
+        assertEquals(true, maze.isMovable(p));
     }
 
     /**
@@ -185,7 +185,7 @@ public class MazeTest {
 
 
     /**
-     * Controlls that getStartPosition returns correct position.
+     * Controls that getStartPosition returns correct position.
      * @throws Exception
      */
     @Test

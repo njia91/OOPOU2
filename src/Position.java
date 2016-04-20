@@ -13,6 +13,7 @@ public class Position {
      * @param y position
      */
     public Position(int y, int x){
+
         this.y = y;
         this.x = x;
     }

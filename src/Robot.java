@@ -3,8 +3,9 @@
  */
 public abstract class Robot {
 
-    private Position p;
+    private Position currentP;
     protected Maze maze;
+    protected Position faceingP;
 
     public Robot(Maze maze){
         this.maze = maze;
@@ -15,9 +16,12 @@ public abstract class Robot {
      */
     public abstract void move();
 
-
+    /**
+     * Returns the current position of the robot.
+     * @return
+     */
     public Position getCurrentPosition(){
-        return this.p;
+        return this.currentP;
     }
 
     /**
@@ -25,7 +29,8 @@ public abstract class Robot {
      * @param p an object of type Position.
      */
     protected void setCurrentPosition(Position p){
-        this.p = p;
+        this.currentP = p;
+
     }
 
     /**
@@ -33,6 +38,6 @@ public abstract class Robot {
      * @return True if robot is at goal.
      */
     public boolean hasReachedGoal(){
-        return maze.isGoal(p);
+        return maze.isGoal(currentP);
     }
 }

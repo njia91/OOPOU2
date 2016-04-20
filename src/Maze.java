@@ -85,7 +85,7 @@ public class Maze {
         }
     }
 
-    public boolean  IsMovable(Position p) throws IndexOutOfBoundsException{
+    public boolean  isMovable(Position p) throws IndexOutOfBoundsException{
 
         try {
             if (maze[p.getY()][p.getX()] == ' ' ||
