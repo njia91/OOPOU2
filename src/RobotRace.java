@@ -13,8 +13,8 @@ public class RobotRace {
                 int stepCounterMemoryRobot = 0;
                 File file = new File(args[0]);
                 FileReader stream = new FileReader(file);
-
                 Maze maze=new Maze(stream);
+
                 //RightHandRuleRobot robbie = new RightHandRuleRobot(maze);
                 MemoryRobot bobbie = new MemoryRobot(maze);
 

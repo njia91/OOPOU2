@@ -57,7 +57,6 @@ public class Maze {
                 i++;
 
             }
-            i = 0 ;
             lineIndex++;
         }
 

@@ -5,16 +5,17 @@ import java.util.IllegalFormatCodePointException;
  */
 public class RightHandRuleRobot extends Robot {
 
-
+    // 1 = east, 2 = south, 3 = west, 4 = north
+    private int facingP;
 
     public RightHandRuleRobot(Maze maze) throws IllegalStateException{
         super(maze);
         try {
             super.setCurrentPosition(maze.getStartPosition());
-            checkIfTraped();
+            checkIfTrapped();
             getFacingPosition(getCurrentPosition());
         } catch (IllegalArgumentException e){
-            System.err.println("Robot is boxed in!");
+            throw new IllegalStateException("Error: Robot is boxed in!");
         }
     }
 

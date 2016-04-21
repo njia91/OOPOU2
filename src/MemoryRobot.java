@@ -31,14 +31,15 @@ public class MemoryRobot extends Robot {
         wayTracker = new Hashtable<String, Integer>();
         try {
             super.setCurrentPosition(maze.getStartPosition());
-            checkIfTraped();
+            checkIfTrapped();
         } catch (IllegalStateException e) {
             System.err.println("Robot is boxed in!");
         }
     }
 
     /**
-     * This method Overrides the method
+     * This method Overrides the method from superclass.
+     * Use this function to make the robot move in the maze.
      */
     @Override
     public void move() throws IllegalStateException{
@@ -47,24 +48,34 @@ public class MemoryRobot extends Robot {
 
         System.out.println("X: " + p.getX() + " Y: " + p.getY());
 
+        //Checks what possible ways the robot can go.
         boolean movableEast = maze.isMovable(p.getPosToEast());
         boolean movableSouth = maze.isMovable(p.getPosToSouth());
         boolean movableNorth = maze.isMovable(p.getPosToNorth());
         boolean movableWest = maze.isMovable(p.getPosToWest());
 
+        //If way movable and not visited push position to stack
+        // and move robot depending on direction.
         if (movableEast && !isVisited(p.getPosToEast())) {
             positionStack.push(p);
             setCurrentPosition(p.getPosToEast());
-        } else if (movableSouth && !isVisited(p.getPosToSouth())) {
+        }
+        else if (movableSouth && !isVisited(p.getPosToSouth())) {
             positionStack.push(p);
             setCurrentPosition(p.getPosToSouth());
-        } else if (movableNorth && !isVisited(p.getPosToNorth())) {
+        }
+        else if (movableNorth && !isVisited(p.getPosToNorth())) {
             positionStack.push(p);
             setCurrentPosition(p.getPosToNorth());
-        } else if (movableWest && !isVisited(p.getPosToWest())) {
+        }
+        else if (movableWest && !isVisited(p.getPosToWest())) {
             positionStack.push(p);
             setCurrentPosition(p.getPosToWest());
-        } else {
+
+        }
+        //If not possible directions to move and/or all directions
+        //visited. Move back to the position which is on stack.
+        else {
             try {
                 setCurrentPosition(positionStack.pop());
             } catch (EmptyStackException e) {
@@ -72,11 +83,17 @@ public class MemoryRobot extends Robot {
             }
 
         }
+        //Mark the recent position as visited by adding it to the hash table.
         addPositiontoHashTable(p);
 
 
     }
 
+    /**
+     * Help function that checks if a position has been visited.
+     * @param p - the position to check.
+     * @return Returns true if visited, false otherwise.
+     */
     private boolean isVisited(Position p) {
         if (wayTracker.containsKey(p.getX() + " " + p.getY())) {
             return true;
@@ -84,11 +101,15 @@ public class MemoryRobot extends Robot {
         return false;
     }
 
-
+    /**
+     * Help function that adds the current position to the hash table.
+     * Converts the positions X and Y values to a string and use it as key.
+     * @param p the position to be added.
+     */
     private void addPositiontoHashTable(Position p) {
-        Integer i = 1;
+
         if (!wayTracker.containsKey(p.getX() + " " + p.getY())) {
-            wayTracker.put(p.getX() + " " + p.getY(), i);
+            wayTracker.put(p.getX() + " " + p.getY(), 1);
         }
     }
 

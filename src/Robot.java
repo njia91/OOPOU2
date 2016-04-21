@@ -1,19 +1,29 @@
 /**
- * Created by dv15man on 2016-04-20.
+ * Created by dv15man
+ * This is an abstract class of an Robot.
+ * The only method which is abstract is the move() function
  */
 public abstract class Robot {
 
     private Position currentP;
     protected Maze maze;
-    // 1 = east, 2 = south, 3 = west, 4 = north
-    protected int facingP;
 
-    public Robot(Maze maze){
+
+    /**
+     * Constructor for Robot class
+     * @param maze - the maze that the robot should search through.
+     * @throws IllegalStateException if robot is trapped/boxed in.
+     */
+    public Robot(Maze maze)throws IllegalStateException{
         this.maze = maze;
+
     }
 
     /**
-     * Abstract class for moving the robot.
+     * Abstract method for moving the robot.
+     * The movement pattern depends on the robot.
+     * @throws IllegalStateException if the robot gets stuck
+     * or unable to find the goal.
      */
     public abstract void move() throws IllegalStateException;
 
@@ -46,15 +56,13 @@ public abstract class Robot {
      * Function is used to check if Robot is trapped/boxed in.
      * @throws IllegalStateException
      */
-    protected  void checkIfTraped() throws IllegalStateException{
+    protected  void checkIfTrapped() throws IllegalStateException{
         if( !maze.isMovable(currentP.getPosToSouth()) &&
                 !maze.isMovable(currentP.getPosToNorth()) &&
                 !maze.isMovable(currentP.getPosToWest()) &&
                 !maze.isMovable(currentP.getPosToEast())){
-            throw new IllegalStateException();
+            throw new IllegalStateException("Error: Robot is boxed in!");
         }
     }
 
-
-
-    }
+}
