@@ -12,15 +12,18 @@ public class RobotRace {
                 int stepCounterRightHandRobot = 0;
                 File file = new File(args[0]);
                 FileReader stream = new FileReader(file);
-                Maze maze=new Maze(stream);
 
+                Maze maze=new Maze(stream);
                 RightHandRuleRobot robbie = new RightHandRuleRobot(maze);
+
+                //!maze.isGoal(robbie.getCurrentPosition()
+
                 int i = 0;
-                while ( i <5) {
+                while (!maze.isGoal(robbie.getCurrentPosition())) {
                     robbie.move();
                     stepCounterRightHandRobot++;
-                    //System.out.println("Steps for right handed robot: " +
-                            //stepCounterRightHandRobot);
+                    System.out.println("Steps for right handed robot: " +
+                            stepCounterRightHandRobot);
                     i++;
                 }
 
