@@ -9,37 +9,46 @@ public class RobotRace {
     public static void main(String[] args) {
         if (args.length == 1) {
             try {
-                int stepCounterRightHandRobot = 0;
+                //int stepCounterRightHandRobot = 0;
+                int stepCounterMemoryRobot = 0;
                 File file = new File(args[0]);
                 FileReader stream = new FileReader(file);
 
                 Maze maze=new Maze(stream);
-                RightHandRuleRobot robbie = new RightHandRuleRobot(maze);
+                //RightHandRuleRobot robbie = new RightHandRuleRobot(maze);
+                MemoryRobot bobbie = new MemoryRobot(maze);
 
-                //!maze.isGoal(robbie.getCurrentPosition()
 
                 int i = 0;
-                while (!maze.isGoal(robbie.getCurrentPosition())) {
-                    robbie.move();
-                    stepCounterRightHandRobot++;
-                    System.out.println("Steps for right handed robot: " +
-                            stepCounterRightHandRobot);
-                    i++;
+                //while (!maze.isGoal(robbie.getCurrentPosition())) {
+                 //   robbie.move();
+                 //   stepCounterRightHandRobot++;
+
+
+
+                 //   i++;
+                //}
+
+                while(!maze.isGoal(bobbie.getCurrentPosition())){
+                    bobbie.move();
+                    stepCounterMemoryRobot++;
                 }
 
                 System.out.println("Steps for right handed robot: " +
-                        stepCounterRightHandRobot);
+                        stepCounterMemoryRobot);
+
+                //System.out.println("Steps for right handed robot: " +
+                //stepCounterRightHandRobot);
 
             } catch (Exception e) {
-                System.out.println("Something wrong with input file!");
-                System.exit(0);
+                System.err.println(e);
             }
 
 
 
         }
         else{
-            throw new IllegalArgumentException("Invalid program parameters.");
+            System.err.println("Invalid program parameters.");
         }
 
     }

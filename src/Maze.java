@@ -62,14 +62,14 @@ public class Maze {
         }
 
         // Controls and checks  that start and goal position exist in the maze.
-        for (int row = 0; row <lineNr; row++){
-            for (int column = 0; column < lineSize; column++){
-                if (maze[row][column] == 'G'){
+        for (int y = 0; y <lineNr; y++){
+            for (int x = 0; x < lineSize; x++){
+                if (maze[y][x] == 'G'){
                     goalExist = true;
                 }
-                if (maze[row][column] == 'S'){
+                if (maze[y][x] == 'S'){
 
-                    this.start = new Position(row,column);
+                    this.start = new Position(x,y);
                     startExist++;
                 }
             }
@@ -82,7 +82,7 @@ public class Maze {
         }
     }
 
-    public boolean  isMovable(Position p) throws IndexOutOfBoundsException{
+    public boolean  isMovable(Position p){
 
         try {
             if (maze[p.getY()][p.getX()] == ' ' ||
@@ -98,7 +98,7 @@ public class Maze {
 
     }
 
-   public boolean isGoal(Position p) throws IndexOutOfBoundsException{
+   public boolean isGoal(Position p){
        try {
            if (maze[p.getY()][p.getX()] == 'G') {
                return true;

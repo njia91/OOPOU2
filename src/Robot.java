@@ -6,7 +6,7 @@ public abstract class Robot {
     private Position currentP;
     protected Maze maze;
     // 1 = east, 2 = south, 3 = west, 4 = north
-    protected int faceingP;
+    protected int facingP;
 
     public Robot(Maze maze){
         this.maze = maze;
@@ -19,7 +19,7 @@ public abstract class Robot {
 
     /**
      * Returns the current position of the robot.
-     * @return
+     * @return current position
      */
     public Position getCurrentPosition(){
         return this.currentP;
@@ -51,7 +51,10 @@ public abstract class Robot {
                 !maze.isMovable(currentP.getPosToNorth()) &&
                 !maze.isMovable(currentP.getPosToWest()) &&
                 !maze.isMovable(currentP.getPosToEast())){
-            throw new IllegalStateException("Robot is boxed in!");
+            throw new IllegalStateException();
         }
     }
-}
+
+
+
+    }

@@ -24,7 +24,7 @@ public class PositionTest {
     @Test
     public void shouldGetCorrectX() throws Exception{
         Position p = new Position(5,6);
-        assertEquals(6, p.getX());
+        assertEquals(6, p.getY());
     }
 
     /**
@@ -34,7 +34,7 @@ public class PositionTest {
     @Test
     public void shouldNotGetCorrectX() throws Exception{
         Position p = new Position(5,6);
-        assertNotEquals(5, p.getX());
+        assertNotEquals(5, p.getY());
     }
 
     /**
@@ -44,7 +44,7 @@ public class PositionTest {
     @Test
     public void shouldGetCorrectY() throws Exception{
         Position p = new Position(6,5);
-        assertEquals(6, p.getY());
+        assertEquals(6, p.getX());
     }
 
     /**
@@ -54,7 +54,7 @@ public class PositionTest {
     @Test
     public void shouldNotGetCorrectY() throws Exception{
         Position p = new Position(5,6);
-        assertNotEquals(6, p.getY());
+        assertNotEquals(6, p.getX());
     }
 
     /**

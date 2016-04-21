@@ -12,7 +12,7 @@ public class Position {
      * @param x position
      * @param y position
      */
-    public Position(int y, int x){
+    public Position(int x, int y){
 
         this.y = y;
         this.x = x;
@@ -39,7 +39,7 @@ public class Position {
      * @return Position
      */
     public Position getPosToSouth(){
-        return new Position(this.y+1, this.x);
+        return new Position(this.x, this.y+1);
     }
 
     /**
@@ -47,7 +47,7 @@ public class Position {
      * @return Position
      */
     public Position getPosToNorth(){
-        return new Position(this.y-1, this.x);
+        return new Position(this.x, this.y-1);
     }
 
     /**
@@ -55,14 +55,14 @@ public class Position {
      * @return Position
      */
     public Position getPosToWest(){
-        return new Position(this.y, this.x-1);
+        return new Position(this.x-1, this.y);
     }
     /**
      * Method that returns the position to the east of current position.
      * @return Position
      */
     public Position getPosToEast(){
-        return new Position(this.y, this.x+1);
+        return new Position(this.x+1, this.y);
     }
 
 
