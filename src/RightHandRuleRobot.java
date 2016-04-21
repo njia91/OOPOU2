@@ -16,34 +16,32 @@ public class RightHandRuleRobot extends Robot {
 
     }
 
-    public void move() throws Exception{
+    public void move() throws IllegalStateException{
         try {
-
             checkIfTraped();
             getFacingPosition(getCurrentPosition());
-
         }
         catch (Exception e) {
             throw new IllegalStateException();
         }
         //System.out.println(getCurrentPosition().getY() + " " + getCurrentPosition().getX());
 
-            if (faceingP.equals(getCurrentPosition().getPosToSouth())) {
-                facingSouth();
-                System.out.println("Hej");
-            }
-            else if (faceingP.equals(getCurrentPosition().getPosToWest())){
-                facingWest();
-                System.out.println("Hej2");
-            }
-            else if (faceingP.equals(getCurrentPosition().getPosToNorth())){
-                facingNorth();
-                System.out.println("Hej3");
-             }
-            else if(faceingP.equals(getCurrentPosition().getPosToEast())){
-                facingEast();
-                System.out.println("Hej4");
-            }
+        switch (faceingP){
+
+            case 1: facingEast();
+                    break;
+
+            case 2: facingSouth();
+                    break;
+
+            case 3: facingWest();
+                    break;
+
+            case 4: facingNorth();
+                    break;
+
+            default: break;
+        }
 
 
     }
@@ -54,17 +52,24 @@ public class RightHandRuleRobot extends Robot {
      */
     private void facingEast(){
         Position p = getCurrentPosition();
-        if (!maze.isMovable(p.getPosToSouth()) &&
-                maze.isMovable(p.getPosToEast())){
-            setCurrentPosition(p.getPosToEast());
-            faceingP = getCurrentPosition().getPosToEast();
+        boolean movableEast = maze.isMovable(p.getPosToEast());
+        boolean movableSouth = maze.isMovable(p.getPosToSouth());
+        boolean movableNorth = maze.isMovable(p.getPosToNorth());
+
+        if (!movableSouth && !movableEast && movableNorth){
+            setCurrentPosition(p.getPosToNorth());
+            faceingP = 4;
         }
-        else if (!maze.isMovable(p.getPosToSouth()) &&
-                !maze.isMovable(p.getPosToEast())){
-            faceingP = getCurrentPosition().getPosToNorth();
+        else  if (movableEast && !movableSouth) {
+             setCurrentPosition(p.getPosToEast());
+        }
+        else if (movableSouth){
+            setCurrentPosition(p.getPosToNorth());
+            faceingP = 2;
         }
         else {
-            faceingP = getCurrentPosition().getPosToSouth();
+            setCurrentPosition(p.getPosToWest());
+            faceingP = 3;
         }
     }
 
@@ -73,17 +78,24 @@ public class RightHandRuleRobot extends Robot {
      */
     private void facingNorth(){
         Position p = getCurrentPosition();
-        if (!maze.isMovable(p.getPosToEast()) &&
-                maze.isMovable(p.getPosToNorth())){
-            setCurrentPosition(p.getPosToNorth());
-            faceingP = getCurrentPosition().getPosToNorth();
+        boolean movableEast = maze.isMovable(p.getPosToEast());
+        boolean movableWest = maze.isMovable(p.getPosToWest());
+        boolean movableNorth = maze.isMovable(p.getPosToNorth());
+
+        if (!movableNorth && !movableEast && movableWest){
+            setCurrentPosition(p.getPosToWest());
+            faceingP = 3;
         }
-        else if (!maze.isMovable(p.getPosToEast()) &&
-                !maze.isMovable(p.getPosToNorth())){
-            faceingP = getCurrentPosition().getPosToWest();
+        else  if (movableNorth && !movableEast) {
+            setCurrentPosition(p.getPosToNorth());
+        }
+        else if (movableEast){
+            setCurrentPosition(p.getPosToEast());
+            faceingP = 1;
         }
         else {
-            faceingP = getCurrentPosition().getPosToEast();
+            setCurrentPosition(p.getPosToSouth());
+            faceingP = 2;
         }
     }
 
@@ -92,18 +104,27 @@ public class RightHandRuleRobot extends Robot {
      */
     private void facingWest(){
         Position p = getCurrentPosition();
-        if (!maze.isMovable(p.getPosToNorth()) &&
-                maze.isMovable(p.getPosToWest())){
-            setCurrentPosition(p.getPosToWest());
-            faceingP = getCurrentPosition().getPosToWest();
+        boolean movableSouth = maze.isMovable(p.getPosToSouth());
+        boolean movableWest = maze.isMovable(p.getPosToWest());
+        boolean movableNorth = maze.isMovable(p.getPosToNorth());
+
+        if (!movableNorth && !movableWest && movableSouth){
+            setCurrentPosition(p.getPosToSouth());
+            faceingP = 2;
         }
-        else if (!maze.isMovable(p.getPosToNorth()) &&
-                !maze.isMovable(p.getPosToWest())){
-            faceingP = getCurrentPosition().getPosToSouth();
+        else  if (movableWest && !movableNorth) {
+            setCurrentPosition(p.getPosToWest());
+        }
+        else if (movableNorth){
+            setCurrentPosition(p.getPosToNorth());
+            faceingP = 4;
         }
         else {
-            faceingP = getCurrentPosition().getPosToNorth();
+            setCurrentPosition(p.getPosToEast());
+            faceingP = 1;
         }
+
+
     }
 
     /**
@@ -111,36 +132,42 @@ public class RightHandRuleRobot extends Robot {
      */
     private void facingSouth(){
         Position p = getCurrentPosition();
-        if (!maze.isMovable(p.getPosToWest()) &&
-                maze.isMovable(p.getPosToSouth())){
-            setCurrentPosition(p.getPosToSouth());
-            faceingP = getCurrentPosition().getPosToSouth();
+        boolean movableEast = maze.isMovable(p.getPosToEast());
+        boolean movableSouth = maze.isMovable(p.getPosToSouth());
+        boolean movableWest = maze.isMovable(p.getPosToWest());
+
+        if (!movableWest && !movableSouth && movableEast){
+            setCurrentPosition(p.getPosToEast());
+            faceingP = 1;
         }
-        else if(!maze.isMovable(p.getPosToWest()) &&
-                !maze.isMovable(p.getPosToSouth())){
-            faceingP = getCurrentPosition().getPosToEast();
+        else  if (movableSouth && !movableWest) {
+            setCurrentPosition(p.getPosToSouth());
+        }
+        else if (movableWest){
+            setCurrentPosition(p.getPosToWest());
+            faceingP = 3;
         }
         else {
-            setCurrentPosition(p.getPosToWest());
-            faceingP = getCurrentPosition().getPosToWest();
+            setCurrentPosition(p.getPosToNorth());
+            faceingP = 4;
         }
+
+
     }
 
     private void getFacingPosition(Position start)throws IllegalStateException{
 
         if (!maze.isMovable(start.getPosToWest())){
-            faceingP = start.getPosToSouth();
-            //System.out.println("SOUTH");
-
+            faceingP = 2;
         }
         else if (!maze.isMovable(start.getPosToNorth())){
-                faceingP = start.getPosToWest();
+                faceingP = 3;
             }
         else if (!maze.isMovable(start.getPosToEast())){
-                faceingP = start.getPosToNorth();
+                faceingP = 4
         }
-        else if (!maze.isMovable(start.getPosToEast())){
-                 faceingP = start.getPosToNorth();
+        else if (!maze.isMovable(start.getPosToSouth())){
+                 faceingP = 1
         }
         else{
             throw new IllegalStateException("Invalid maze!");

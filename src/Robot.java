@@ -5,7 +5,8 @@ public abstract class Robot {
 
     private Position currentP;
     protected Maze maze;
-    protected Position faceingP;
+    // 1 = east, 2 = south, 3 = west, 4 = north
+    protected int faceingP;
 
     public Robot(Maze maze){
         this.maze = maze;
@@ -14,7 +15,7 @@ public abstract class Robot {
     /**
      * Abstract class for moving the robot.
      */
-    public abstract void move() throws Exception;
+    public abstract void move() throws IllegalStateException;
 
     /**
      * Returns the current position of the robot.

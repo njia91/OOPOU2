@@ -92,7 +92,7 @@ public class Maze {
             }
 
         } catch (ArrayIndexOutOfBoundsException e){
-            System.out.println();
+            return false;
         }
         return false;
 
@@ -104,14 +104,13 @@ public class Maze {
                return true;
            }
        } catch(ArrayIndexOutOfBoundsException e){
-           System.out.println("Array index out of bounds!");
+           return false;
        }
         return false;
 
    }
 
     public Position getStartPosition(){
-
         return this.start;
     }
 }
