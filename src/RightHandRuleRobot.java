@@ -2,12 +2,19 @@ import java.util.IllegalFormatCodePointException;
 
 /**
  * Created by dv15man.
+ * This class depicts a Robot that follows the wall to its right hand side wall
+ * to find its way to the goal.
  */
 public class RightHandRuleRobot extends Robot {
 
     // 1 = east, 2 = south, 3 = west, 4 = north
     private int facingP;
 
+    /**
+     * Constructs Righthandrulerobot.
+     * @param maze The maze that the robot should walk through.
+     * @throws IllegalStateException - if the robot is trapped/boxed in.
+     */
     public RightHandRuleRobot(Maze maze) throws IllegalStateException{
         super(maze);
         try {
@@ -19,6 +26,12 @@ public class RightHandRuleRobot extends Robot {
         }
     }
 
+
+    /**
+     * This method moves the robot. It uses private functions to decide
+     * what position the robot should move to.
+     * @throws IllegalStateException - incase Robot has no walls around.
+     */
     @Override
     public void move()  throws IllegalStateException{
 
@@ -154,6 +167,10 @@ public class RightHandRuleRobot extends Robot {
 
     }
 
+    /**
+     * Method that which position the robot face in the start.
+     * @param start - the start position for the robot.
+     */
     private void getFacingPosition(Position start){
 
         if (!maze.isMovable(start.getPosToWest())) {

@@ -46,7 +46,7 @@ public class MemoryRobot extends Robot {
 
         Position p = getCurrentPosition();
 
-        System.out.println("X: " + p.getX() + " Y: " + p.getY());
+
 
         //Checks what possible ways the robot can go.
         boolean movableEast = maze.isMovable(p.getPosToEast());
@@ -85,7 +85,6 @@ public class MemoryRobot extends Robot {
         }
         //Mark the recent position as visited by adding it to the hash table.
         addPositiontoHashTable(p);
-
 
     }
 
