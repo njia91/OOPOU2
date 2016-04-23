@@ -155,7 +155,7 @@ public class PositionTest {
     public void  shouldBeSamePositionEast() throws Exception {
         Position p1 = new Position(10,10);
         Position p2;
-        Position p3 = new Position(10,11);
+        Position p3 = new Position(11,10);
         p2 = p1.getPosToEast();
         assertEquals(true, p2.equals(p3));
     }
@@ -168,7 +168,7 @@ public class PositionTest {
     public void  shouldBeSamePositionWest() throws Exception {
         Position p1 = new Position(10,10);
         Position p2;
-        Position p3 = new Position(10,9);
+        Position p3 = new Position(9,10);
         p2 = p1.getPosToWest();
         assertEquals(true, p2.equals(p3));
     }
@@ -181,7 +181,7 @@ public class PositionTest {
     public void  shouldBeSamePositionSouth() throws Exception {
         Position p1 = new Position(10,10);
         Position p2;
-        Position p3 = new Position(11,10);
+        Position p3 = new Position(10,11);
         p2 = p1.getPosToSouth();
         assertEquals(true, p2.equals(p3));
     }
@@ -194,7 +194,7 @@ public class PositionTest {
     public void  shouldBeSamePositionNorth() throws Exception {
         Position p1 = new Position(10,10);
         Position p2;
-        Position p3 = new Position(9,10);
+        Position p3 = new Position(10,9);
         p2 = p1.getPosToNorth();
         assertEquals(true, p2.equals(p3));
     }
