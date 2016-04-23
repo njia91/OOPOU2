@@ -17,11 +17,12 @@ public class RightHandRuleRobot extends Robot {
      */
     public RightHandRuleRobot(Maze maze) throws IllegalStateException{
         super(maze);
-        try {
+
             super.setCurrentPosition(maze.getStartPosition());
-            checkIfTrapped();
+
             getFacingPosition(getCurrentPosition());
-        } catch (IllegalArgumentException e){
+
+        if (checkIfTrapped()){
             throw new IllegalStateException("Error: Robot is boxed in!");
         }
     }

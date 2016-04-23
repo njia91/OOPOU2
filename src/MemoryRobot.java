@@ -29,11 +29,9 @@ public class MemoryRobot extends Robot {
         super(maze);
         positionStack = new Stack<Position>();
         wayTracker = new Hashtable<String, Integer>();
-        try {
-            super.setCurrentPosition(maze.getStartPosition());
-            checkIfTrapped();
-        } catch (IllegalStateException e) {
-            System.err.println("Robot is boxed in!");
+        super.setCurrentPosition(maze.getStartPosition());
+        if (checkIfTrapped()){
+            throw new IllegalStateException("Error: Robot is boxed in!");
         }
     }
 

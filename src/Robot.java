@@ -54,15 +54,16 @@ public abstract class Robot {
 
     /**
      * Function is used to check if Robot is trapped/boxed in.
-     * @throws IllegalStateException
+     * @return True if trapped
      */
-    protected  void checkIfTrapped() throws IllegalStateException{
+    protected  boolean checkIfTrapped(){
         if( !maze.isMovable(currentP.getPosToSouth()) &&
                 !maze.isMovable(currentP.getPosToNorth()) &&
                 !maze.isMovable(currentP.getPosToWest()) &&
                 !maze.isMovable(currentP.getPosToEast())){
-            throw new IllegalStateException("Error: Robot is boxed in!");
+            return true;
         }
+        return false;
     }
 
 }
