@@ -31,7 +31,7 @@ public class RightHandRuleRobot extends Robot {
     /**
      * This method moves the robot. It uses private functions to decide
      * what position the robot should move to.
-     * @throws IllegalStateException - incase Robot has no walls around.
+     * @throws IllegalStateException - in case Robot has no walls around.
      */
     @Override
     public void move()  throws IllegalStateException{
@@ -54,6 +54,10 @@ public class RightHandRuleRobot extends Robot {
                     throw new IllegalStateException("Invalid maze: " +
                          "No walls around the robot!");
 
+        }
+        // If Robot came back to start position, it is unable to find the goal.
+        if (maze.getStartPosition().equals(getCurrentPosition())){
+            throw new IllegalStateException("Robot could not find a goal!");
         }
 
 
