@@ -50,7 +50,6 @@ public class RobotRace {
 
                 }
 
-
                 System.out.println("Steps for MemoryRobot robot: " +
                         stepCounterMemoryRobot);
                 System.out.println("Steps for RightHandRuleRobot: " +
